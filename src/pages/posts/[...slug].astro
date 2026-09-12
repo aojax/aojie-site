@@ -72,6 +72,56 @@ const updatedFormatted = post.data.updatedDate?.toLocaleDateString('zh-CN', {
       <Content />
     </div>
 
+    <aside class="share" aria-label="分享这篇文章">
+      <h3>分享这篇文章</h3>
+      <div class="share-grid">
+        <div class="share-qr">
+          <img
+            src={`/qr/${post.id}.png`}
+            alt="扫码访问本文"
+            width="180"
+            height="180"
+            loading="lazy"
+            decoding="async"
+          />
+          <p>微信 / 任意扫码 App 即可访问</p>
+        </div>
+        <div class="share-actions">
+          <button
+            type="button"
+            class="copy-btn"
+            data-url={`https://aojie.space/posts/${post.id}/`}
+            aria-label="复制文章链接"
+          >
+            <span class="copy-icon" aria-hidden="true">🔗</span>
+            <span class="copy-label">复制链接</span>
+          </button>
+          <a
+            class="share-link"
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.data.title)}&url=${encodeURIComponent(`https://aojie.space/posts/${post.id}/`)}`}
+            target="_blank"
+            rel="noopener"
+          >
+            Twitter / X
+          </a>
+          <a
+            class="share-link"
+            href={`https://t.me/share/url?url=${encodeURIComponent(`https://aojie.space/posts/${post.id}/`)}&text=${encodeURIComponent(post.data.title)}`}
+            target="_blank"
+            rel="noopener"
+          >
+            Telegram
+          </a>
+          <a
+            class="share-link"
+            href={`mailto:?subject=${encodeURIComponent(post.data.title)}&body=${encodeURIComponent(`https://aojie.space/posts/${post.id}/`)}`}
+          >
+            邮件
+          </a>
+        </div>
+      </div>
+    </aside>
+
     <footer class="post-footer">
       <a href="/posts">← 返回所有文章</a>
     </footer>
@@ -176,4 +226,126 @@ const updatedFormatted = post.data.updatedDate?.toLocaleDateString('zh-CN', {
     border-top: 1px solid var(--color-border);
     color: var(--color-text-mute);
   }
+
+  /* 分享区 */
+  .share {
+    margin: 4rem 0 0;
+    padding: 2rem;
+    background-color: var(--color-bg-soft);
+    border: 1px solid var(--color-border-soft);
+    border-radius: var(--radius);
+  }
+
+  .share h3 {
+    margin: 0 0 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .share-grid {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .share-qr {
+    text-align: center;
+  }
+
+  .share-qr img {
+    width: 180px;
+    height: 180px;
+    display: block;
+    margin: 0 auto 0.6rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background-color: #fff;
+  }
+
+  .share-qr p {
+    font-size: 0.75rem;
+    color: var(--color-text-mute);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .share-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .copy-btn,
+  .share-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1rem;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .copy-btn:hover,
+  .share-link:hover {
+    color: var(--color-link);
+    border-color: var(--color-link);
+  }
+
+  .copy-btn.is-copied {
+    color: #1a7f37;
+    border-color: #1a7f37;
+  }
+
+  .copy-icon {
+    font-size: 0.95em;
+  }
+
+  @media (max-width: 640px) {
+    .share-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .share-qr img {
+      width: 160px;
+      height: 160px;
+    }
+  }
 </style>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.copy-btn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const url = btn.dataset.url;
+      if (!url) return;
+      try {
+        await navigator.clipboard.writeText(url);
+      } catch {
+        // fallback
+        const ta = document.createElement('textarea');
+        ta.value = url;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch { /* noop */ }
+        document.body.removeChild(ta);
+      }
+      const label = btn.querySelector('.copy-label');
+      const original = label?.textContent ?? '复制链接';
+      if (label) label.textContent = '已复制';
+      btn.classList.add('is-copied');
+      setTimeout(() => {
+        if (label) label.textContent = original;
+        btn.classList.remove('is-copied');
+      }, 2000);
+    });
+  });
+</script>
