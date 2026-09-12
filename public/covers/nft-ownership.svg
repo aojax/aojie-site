@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#fafaf9"/>
+  <text x="100" y="120" font-family="monospace" font-size="20" fill="#a3a3a3" letter-spacing="0.1em">NFT · 数字资产权属</text>
+  <text x="100" y="280" font-family="serif" font-size="120" font-weight="600" fill="#1a1a1a" letter-spacing="-0.04em">NFT</text>
+  <text x="320" y="280" font-family="serif" font-size="50" font-weight="400" fill="#525252">能证明什么？</text>
+  <line x1="100" y1="340" x2="1100" y2="340" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="100" y="400" font-family="serif" font-size="30" fill="#1a1a1a">① 链上凭证</text>
+  <text x="450" y="400" font-family="serif" font-size="30" fill="#525252">→</text>
+  <text x="510" y="400" font-family="serif" font-size="30" fill="#1a1a1a">② 数字内容</text>
+  <text x="820" y="400" font-family="serif" font-size="30" fill="#525252">→</text>
+  <text x="880" y="400" font-family="serif" font-size="30" fill="#c1272d" font-weight="600">③ 文化源头</text>
+  <text x="100" y="480" font-family="serif" font-size="22" fill="#525252">三层结构 · 缺一不可</text>
+  <text x="100" y="580" font-family="serif" font-size="18" fill="#a3a3a3">— aojie.space</text>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#1a1a1a"/>
+  <text x="100" y="120" font-family="monospace" font-size="20" fill="#a3a3a3" letter-spacing="0.1em">RWA · 文化资产出海</text>
+  <text x="100" y="280" font-family="serif" font-size="90" font-weight="600" fill="#fafaf9" letter-spacing="-0.02em">上链不是终点</text>
+  <text x="100" y="380" font-family="serif" font-size="90" font-weight="600" fill="#c1272d" letter-spacing="-0.02em">链下资产才是起点</text>
+  <line x1="100" y1="430" x2="320" y2="430" stroke="#c1272d" stroke-width="3"/>
+  <text x="100" y="500" font-family="serif" font-size="28" fill="#a3a3a3">资产 · 权利 · 监管 · 投资者保护</text>
+  <text x="100" y="580" font-family="monospace" font-size="18" fill="#525252">— aojie.space</text>
+</svg>

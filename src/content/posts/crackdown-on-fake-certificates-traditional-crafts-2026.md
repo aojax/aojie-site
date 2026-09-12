@@ -4,6 +4,7 @@ description: '这不是一次只查"假货"的专项行动，而是对一整条�
 pubDate: 2026-09-03
 category: 政策与监管
 tags: ['打假清源', '传统工艺', '鉴证溯源', '市场监管', '数字护照']
+cover: '/covers/crackdown-fake-certificates.svg'
 featured: true
 ---
 

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#fafaf9"/>
+  <text x="100" y="120" font-family="monospace" font-size="20" fill="#a3a3a3" letter-spacing="0.1em">POLICY · 2026-09-07</text>
+  <text x="100" y="240" font-family="serif" font-size="60" font-weight="600" fill="#1a1a1a" letter-spacing="-0.02em">历史经典产业</text>
+  <text x="100" y="320" font-family="serif" font-size="60" font-weight="400" fill="#525252" letter-spacing="-0.01em">从政策到落地</text>
+  <line x1="100" y1="370" x2="320" y2="370" stroke="#1a1a1a" stroke-width="2"/>
+  <text x="100" y="440" font-family="serif" font-size="28" fill="#1a1a1a">确真 · 确权 · 确源 · 确价</text>
+  <text x="100" y="490" font-family="serif" font-size="22" fill="#525252">每一项都需要单独的证据</text>
+  <text x="100" y="580" font-family="serif" font-size="18" fill="#a3a3a3">— 工信部联消费〔2026〕204 号 · 林奥杰</text>
+</svg>

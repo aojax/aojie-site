@@ -4,6 +4,7 @@ description: '这是我的个人研究站点开篇。在数字艺术金融与文
 pubDate: 2026-09-12
 category: 站点公告
 tags: ['元信息', '站点', '开始']
+cover: '/covers/welcome.svg'
 featured: true
 ---
 

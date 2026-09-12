@@ -17,6 +17,11 @@ const dateFormatted = pubDate.toLocaleDateString('zh-CN', {
 
 <article class="post-card">
   <a href={`/posts/${post.id}`} class="post-card-link">
+    {post.data.cover && (
+      <div class="cover">
+        <img src={post.data.cover} alt={title} loading="lazy" />
+      </div>
+    )}
     <header class="post-card-header">
       {category && <span class="category">{category}</span>}
       <h2 class="title">{title}</h2>
@@ -40,6 +45,28 @@ const dateFormatted = pubDate.toLocaleDateString('zh-CN', {
     margin: 2rem 0;
     padding: 1.5rem 0;
     border-bottom: 1px solid var(--color-border-soft);
+  }
+
+  .cover {
+    margin: 0 0 1rem;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background-color: var(--color-bg-soft);
+  }
+
+  .cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    border-radius: var(--radius);
+    transition: transform 0.3s ease, opacity 0.2s ease;
+    opacity: 0.95;
+  }
+
+  .post-card-link:hover .cover img {
+    transform: scale(1.02);
+    opacity: 1;
   }
 
   .post-card:last-of-type {

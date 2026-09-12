@@ -4,6 +4,7 @@ description: 'NFT 的"唯一性"只证明某个链上记录具有唯一标识，
 pubDate: 2026-09-06
 category: 研究笔记
 tags: ['NFT', '数字资产', '权属', '授权链']
+cover: '/covers/nft-ownership.svg'
 ---
 
 2021 年 NFT 进入大众视野时，最被广泛传播的一个误解是：**NFT 就是数字作品的所有权证明。**

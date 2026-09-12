@@ -10,6 +10,7 @@ export interface Props {
   publishDate?: Date;
   tags?: string[];
   canonicalURL?: string;
+  cover?: string;
 }
 
 const {
@@ -19,12 +20,14 @@ const {
   publishDate,
   tags,
   canonicalURL,
+  cover,
 } = Astro.props;
 
 const siteName = 'aojie.space';
 const fullTitle = title === siteName ? title : `${title} · ${siteName}`;
 const canonical = canonicalURL || new URL(Astro.url.pathname, Astro.site).toString();
-const ogImage = new URL('/og-default.png', Astro.site).toString();
+const ogImagePath = cover || '/og-default.svg';
+const ogImage = new URL(ogImagePath, Astro.site).toString();
 ---
 
 <!doctype html>

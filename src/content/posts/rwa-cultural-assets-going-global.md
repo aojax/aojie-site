@@ -4,6 +4,7 @@ description: '把文物或艺术品放到香港并不能自动让它金融化。
 pubDate: 2026-09-08
 category: 研究笔记
 tags: ['RWA', '文化资产', '数字艺术金融', '跨境合规']
+cover: '/covers/rwa-cultural-assets.svg'
 ---
 
 RWA（Real World Asset，真实世界资产代币化）是过去两年里文化数字资产领域最热、也最容易被误读的概念之一。流行的叙事是：**把现实世界里的资产搬到区块链上，就能获得流动性、透明性和全球投资者。**

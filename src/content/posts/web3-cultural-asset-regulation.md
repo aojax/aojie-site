@@ -4,6 +4,7 @@ description: '文化数字资产监管不是反对数字化，而是要求资产
 pubDate: 2026-09-04
 category: 政策与监管
 tags: ['Web3', '监管', '文化数字资产', '合规']
+cover: '/covers/web3-regulation.svg'
 ---
 
 很多人对文化数字资产监管的第一反应是：**监管是不是在打压创新？**
