@@ -73,6 +73,49 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <li>RSS：<a href="/rss.xml">订阅本站更新</a></li>
       </ul>
     </section>
+
+    <section class="gallery-section">
+      <h2>活动照片</h2>
+      <p class="gallery-intro">近年部分学术演讲、论坛交流与教学场景。</p>
+      <div class="gallery">
+        <figure>
+          <img
+            src="/photos/portrait-formal-3.jpg"
+            alt="林奥杰正装照"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>正装照</figcaption>
+        </figure>
+        <figure>
+          <img
+            src="/photos/speaking-ecnu-2.jpg"
+            alt="华东师范大学演讲 2"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>华东师范大学 · 演讲 2</figcaption>
+        </figure>
+        <figure>
+          <img
+            src="/photos/speaking-ecnu-2-1.jpg"
+            alt="华东师范大学演讲 2-1"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>华东师范大学 · 演讲 2-1</figcaption>
+        </figure>
+        <figure>
+          <img
+            src="/photos/teaching.jpg"
+            alt="授课场景"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>授课</figcaption>
+        </figure>
+      </div>
+    </section>
   </div>
 </BaseLayout>
 
@@ -128,6 +171,67 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   @media (max-width: 640px) {
     .portrait {
       max-width: 240px;
+    }
+  }
+
+  /* 照片墙 */
+  .gallery-section {
+    margin: 4rem 0 2rem;
+  }
+
+  .gallery-intro {
+    color: var(--color-text-soft);
+    font-size: 0.95rem;
+    margin-top: -0.5em;
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+  }
+
+  .gallery figure {
+    margin: 0;
+  }
+
+  .gallery img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border-soft);
+    background-color: var(--color-bg-soft);
+    margin: 0;
+    transition: transform 0.2s ease;
+  }
+
+  .gallery img:hover {
+    transform: scale(1.02);
+  }
+
+  .gallery figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--color-text-mute);
+    text-align: center;
+    font-family: var(--font-mono);
+    letter-spacing: 0.02em;
+  }
+
+  @media (min-width: 900px) {
+    .gallery {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .gallery {
+      gap: 0.8rem;
+    }
+    .gallery img {
+      height: 160px;
     }
   }
 </style>

@@ -27,3 +27,9 @@ pnpm-debug.log*
 
 # astro
 .astro/
+
+# temp scripts
+_tmp_*.py
+_tmp_*.js
+_tmp_*.sh
+*.tmp

@@ -14,15 +14,27 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
 >
   <div class="container">
     <section class="hero">
-      <h1>数字艺术金融 &middot; 文化数字资产</h1>
-      <p class="lede">
-        聚焦 <strong>NFT、Web3、艺术品鉴证溯源、AI 估值、RWA</strong> 等交叉领域。
-        把零散的研究主线串成一条可被时间索引的线。
-      </p>
-      <p class="meta-note">
-        研究者 · 林奥杰 · 首尔科学综合大学院大学 ·
-        <a href="/about">关于我 →</a>
-      </p>
+      <figure class="hero-portrait">
+        <img
+          src="/about/portrait-formal-2.jpg"
+          alt="林奥杰"
+          width="240"
+          height="320"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
+      <div class="hero-text">
+        <h1>数字艺术金融 &middot; 文化数字资产</h1>
+        <p class="lede">
+          聚焦 <strong>NFT、Web3、艺术品鉴证溯源、AI 估值、RWA</strong> 等交叉领域。
+          把零散的研究主线串成一条可被时间索引的线。
+        </p>
+        <p class="meta-note">
+          研究者 · <strong>林奥杰</strong> · 首尔科学综合大学院大学 ·
+          <a href="/about">关于我 →</a>
+        </p>
+      </div>
     </section>
 
     <section class="latest">
@@ -40,10 +52,31 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
 
 <style>
   .hero {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 3rem;
+    align-items: center;
     margin: 4rem 0 5rem;
+    padding: 2rem 0;
   }
 
-  .hero h1 {
+  .hero-portrait {
+    margin: 0;
+  }
+
+  .hero-portrait img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border-soft);
+    box-shadow: var(--shadow-soft);
+    margin: 0;
+    background-color: var(--color-bg-soft);
+  }
+
+  .hero-text h1 {
     font-size: 2.2rem;
     margin: 0 0 1rem;
     font-weight: 600;
@@ -75,5 +108,22 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
 
   .post-list {
     margin-top: 1rem;
+  }
+
+  @media (max-width: 720px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin: 2.5rem 0 3rem;
+    }
+
+    .hero-portrait {
+      max-width: 200px;
+      margin: 0 auto;
+    }
+
+    .hero-text h1 {
+      font-size: 1.7rem;
+    }
   }
 </style>
