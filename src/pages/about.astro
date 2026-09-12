@@ -122,6 +122,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </ul>
     </section>
 
+    <section class="platform-section">
+      <h2>在线平台</h2>
+      <a
+        class="platform-card"
+        href="https://cultural-digital-assets-library.aojax-lin.workers.dev/"
+        target="_blank"
+        rel="noopener"
+      >
+        <div class="platform-cover">
+          <img
+            src="/projects/cultural-digital-assets-library.jpg"
+            alt="文化数字资产电子书馆首页"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="platform-meta">
+          <h3 class="platform-title">文化数字资产电子书馆</h3>
+          <p class="platform-desc">
+            已授权读者可访问的数字资产电子书与国家标准查询平台。覆盖管理、交易、评估标准、艺术品金融等核心方向。
+          </p>
+          <p class="platform-link">访问平台 →</p>
+        </div>
+      </a>
+    </section>
+
     <section class="gallery-section">
       <h2>活动照片</h2>
       <p class="gallery-intro">近年部分学术演讲、论坛交流与教学场景。</p>
@@ -304,6 +330,71 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       max-width: 240px;
       margin: 0 auto 0.8rem;
     }
+  }
+
+  /* 在线平台卡片 */
+  .platform-section {
+    margin: 3.5rem 0;
+  }
+
+  .platform-card {
+    display: block;
+    color: inherit;
+    border-bottom: 0;
+    transition: transform 0.2s ease;
+  }
+
+  .platform-card:hover {
+    color: inherit;
+    transform: translateY(-3px);
+  }
+
+  .platform-cover {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border-soft);
+    background-color: var(--color-bg-soft);
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 1rem;
+  }
+
+  .platform-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0;
+    border-radius: var(--radius);
+    transition: transform 0.3s ease;
+  }
+
+  .platform-card:hover .platform-cover img {
+    transform: scale(1.02);
+  }
+
+  .platform-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 0 0.4rem;
+  }
+
+  .platform-desc {
+    color: var(--color-text-soft);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 0 0.6rem;
+  }
+
+  .platform-link {
+    color: var(--color-link);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+
+  .platform-card:hover .platform-link {
+    color: var(--color-link-hover);
   }
 
   /* 照片墙 */
