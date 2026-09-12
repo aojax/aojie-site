@@ -1,0 +1,78 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+// 按年份分组
+const postsByYear = posts.reduce((acc, post) => {
+  const year = post.data.pubDate.getFullYear();
+  if (!acc.has(year)) acc.set(year, []);
+  acc.get(year)!.push(post);
+  return acc;
+}, new Map<number, typeof posts>());
+
+const years = [...postsByYear.keys()].sort((a, b) => b - a);
+---
+
+<BaseLayout title="所有文章" description="林奥杰研究站点所有已发布文章。">
+  <div class="container">
+    <header class="page-header">
+      <h1>所有文章</h1>
+      <p class="count">共 {posts.length} 篇 · 按年份倒序</p>
+    </header>
+
+    {years.map((year) => (
+      <section class="year-section">
+        <h2 class="year-heading">{year}</h2>
+        <div class="post-list">
+          {postsByYear.get(year)!.map((post) => <PostCard post={post} />)}
+        </div>
+      </section>
+    ))}
+
+    {posts.length === 0 && <p class="empty">还没有文章。</p>}
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    margin: 4rem 0 3rem;
+  }
+
+  .page-header h1 {
+    margin: 0 0 0.3em;
+  }
+
+  .count {
+    color: var(--color-text-mute);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .year-section {
+    margin-bottom: 3rem;
+  }
+
+  .year-heading {
+    font-size: 1.1rem;
+    color: var(--color-text-mute);
+    font-family: var(--font-mono);
+    font-weight: 400;
+    margin: 0 0 0.5em;
+    border: 0;
+    padding: 0;
+  }
+
+  .post-list {
+    margin: 0;
+  }
+
+  .empty {
+    color: var(--color-text-mute);
+    font-style: italic;
+  }
+</style>

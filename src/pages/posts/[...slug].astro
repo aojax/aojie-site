@@ -1,0 +1,148 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export const getStaticPaths = (async () => {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const dateFormatted = post.data.pubDate.toLocaleDateString('zh-CN', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const updatedFormatted = post.data.updatedDate?.toLocaleDateString('zh-CN', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  ogType="article"
+  publishDate={post.data.pubDate}
+  tags={post.data.tags}
+>
+  <article class="container post">
+    <header class="post-header">
+      {post.data.category && <p class="category">{post.data.category}</p>}
+      <h1>{post.data.title}</h1>
+      {post.data.description && <p class="description">{post.data.description}</p>}
+      <div class="meta">
+        <time datetime={post.data.pubDate.toISOString()}>
+          发布于 {dateFormatted}
+        </time>
+        {post.data.updatedDate && (
+          <span class="updated"> · 更新于 {updatedFormatted}</span>
+        )}
+      </div>
+      {post.data.tags.length > 0 && (
+        <ul class="tags">
+          {post.data.tags.map((tag) => <li class="tag">#{tag}</li>)}
+        </ul>
+      )}
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <footer class="post-footer">
+      <a href="/posts">← 返回所有文章</a>
+    </footer>
+  </article>
+</BaseLayout>
+
+<style>
+  .post {
+    margin: 4rem auto;
+  }
+
+  .post-header {
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .category {
+    font-size: 0.8rem;
+    color: var(--color-text-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.8em;
+    font-family: var(--font-mono);
+  }
+
+  .post-header h1 {
+    margin: 0 0 0.4em;
+    font-size: 2rem;
+    line-height: 1.25;
+  }
+
+  .description {
+    color: var(--color-text-soft);
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin: 0 0 1rem;
+  }
+
+  .meta {
+    color: var(--color-text-mute);
+    font-size: 0.85rem;
+    margin: 0 0 0.8em;
+  }
+
+  .updated {
+    color: var(--color-text-mute);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tag {
+    color: var(--color-text-mute);
+    font-size: 0.85rem;
+  }
+
+  /* 文章正文（Prose 样式） */
+  .prose {
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .prose :global(h2) {
+    margin-top: 2.5em;
+  }
+
+  .prose :global(h3) {
+    margin-top: 2em;
+  }
+
+  .prose :global(blockquote) {
+    margin: 1.8em 0;
+  }
+
+  .post-footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-mute);
+  }
+</style>

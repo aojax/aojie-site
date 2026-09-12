@@ -1,0 +1,20 @@
+{
+  "name": "aojie-site",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "林奥杰的数字艺术金融与文化数字资产研究站点",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.0.0",
+    "@astrojs/rss": "^4.0.0",
+    "@astrojs/sitemap": "^3.0.0",
+    "@astrojs/mdx": "^4.0.0"
+  }
+}

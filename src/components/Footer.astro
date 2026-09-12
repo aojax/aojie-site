@@ -1,0 +1,44 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <p class="copyright">
+        © {year} 林奥杰 · aojie.space · 内容采用 CC BY-NC 4.0 协议
+      </p>
+      <p class="meta">
+        本站由 <a href="https://astro.build" target="_blank" rel="noopener">Astro</a>
+        构建 · 托管于 <a href="https://www.cloudflare.com" target="_blank" rel="noopener">Cloudflare</a>
+        · 域名由 <a href="https://wanwang.aliyun.com" target="_blank" rel="noopener">阿里云</a> 提供
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: 6rem;
+    padding: 2.5rem 0 3rem;
+    border-top: 1px solid var(--color-border-soft);
+    color: var(--color-text-mute);
+    font-size: 0.85rem;
+  }
+
+  .footer-inner p {
+    margin: 0.3em 0;
+  }
+
+  .copyright {
+    color: var(--color-text-soft);
+  }
+
+  .meta {
+    font-size: 0.8rem;
+  }
+
+  .meta a {
+    color: var(--color-text-soft);
+  }
+</style>
