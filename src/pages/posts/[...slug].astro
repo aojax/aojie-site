@@ -36,6 +36,19 @@ const updatedFormatted = post.data.updatedDate?.toLocaleDateString('zh-CN', {
   cover={post.data.cover}
 >
   <article class="container post">
+    {post.data.cover && (
+      <figure class="post-cover">
+        <img
+          src={post.data.cover}
+          alt={post.data.title}
+          width="1200"
+          height="630"
+          loading="eager"
+          decoding="async"
+        />
+      </figure>
+    )}
+
     <header class="post-header">
       {post.data.category && <p class="category">{post.data.category}</p>}
       <h1>{post.data.title}</h1>
@@ -68,6 +81,23 @@ const updatedFormatted = post.data.updatedDate?.toLocaleDateString('zh-CN', {
 <style>
   .post {
     margin: 4rem auto;
+  }
+
+  .post-cover {
+    margin: 0 0 2.5rem;
+  }
+
+  .post-cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1200 / 630;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border-soft);
+    background-color: var(--color-bg-soft);
+    box-shadow: var(--shadow-soft);
+    margin: 0;
   }
 
   .post-header {
