@@ -76,3 +76,7 @@ cover: '/covers/historical-industries.png'
 - **文化转译的核心是"用户参与"** —— 没有复购和反馈的转译只是"营销包装"
 
 > 从政策到落地，最远的距离不是技术，是证据。
+
+---
+
+> **完整分析**：[从"文化支柱产业"到"历史经典产业"，中国正在重新组织传统的价值](/posts/from-cultural-pillar-to-historical-classic-industries/) —— 本文是同一主题的深度长文（5000+ 字，13 个公开来源）。从政策史讲到机会与偏差，约 12 分钟读完。
