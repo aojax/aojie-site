@@ -1,11 +1,35 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
 
 const posts = (await getCollection('posts', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 10);
+
+// 系列阅读：文化转译与新消费
+const seriesSlugs = [
+  {
+    slug: 'ten-denar-to-a-keepable-gift',
+    label: '案例',
+    description: '从一张 10 第纳尔纸币到一个被记住的礼物。三次转译如何把异国钱变成只属于某个人的纪念物。',
+  },
+  {
+    slug: 'from-cultural-pillar-to-historical-classic-industries',
+    label: '深度',
+    description: '5000+ 字长文。从文化支柱产业到历史经典产业，中国如何系统部署文化资源的现代组织。',
+  },
+  {
+    slug: 'historical-classic-industries-translation',
+    label: '框架',
+    description: '4 分钟快速读。政策框架 + 四份证据 + 确真/确权/确源/确价的区分。',
+  },
+];
+
+const series = await Promise.all(seriesSlugs.map(async (s) => {
+  const post = await getEntry('posts', s.slug);
+  return { ...s, post };
+}));
 ---
 
 <BaseLayout
@@ -34,6 +58,34 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
           研究者 · <strong>林奥杰</strong> · 中国艺术经济研究院副秘书长 · 沉浸式交互动漫文旅部重点实验室专家委员会委员 ·
           <a href="/about">关于我 →</a>
         </p>
+      </div>
+    </section>
+
+    <section class="series">
+      <header class="series-header">
+        <h2>系列阅读</h2>
+        <p class="series-subtitle">文化转译与新消费 · 从设计案例到政策框架</p>
+      </header>
+      <div class="series-grid">
+        {series.map(({ slug, label, description, post }) => (
+          <a class="series-card" href={`/posts/${slug}`}>
+            <div class="series-cover">
+              {post?.data.cover && (
+                <img src={post.data.cover} alt={post.data.title} loading="lazy" decoding="async" />
+              )}
+              <span class="series-tag">{label}</span>
+            </div>
+            <div class="series-meta">
+              <h3 class="series-title">{post?.data.title}</h3>
+              <p class="series-desc">{description}</p>
+              <p class="series-date">
+                <time datetime={post?.data.pubDate.toISOString()}>
+                  {post?.data.pubDate.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </time>
+              </p>
+            </div>
+          </a>
+        ))}
       </div>
     </section>
 
@@ -95,6 +147,114 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
     font-size: 0.9rem;
   }
 
+  /* 系列阅读模块 */
+  .series {
+    margin: 0 0 5rem;
+  }
+
+  .series-header {
+    margin-bottom: 2rem;
+  }
+
+  .series-header h2 {
+    font-size: 1.3rem;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 0.4em;
+    margin: 0 0 0.5rem;
+  }
+
+  .series-subtitle {
+    font-size: 0.95rem;
+    color: var(--color-text-soft);
+    margin: 0;
+    font-family: var(--font-mono);
+    letter-spacing: 0.02em;
+  }
+
+  .series-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .series-card {
+    display: flex;
+    flex-direction: column;
+    color: inherit;
+    border-bottom: 0;
+    transition: transform 0.2s ease;
+  }
+
+  .series-card:hover {
+    color: inherit;
+    transform: translateY(-3px);
+  }
+
+  .series-cover {
+    position: relative;
+    aspect-ratio: 1200 / 630;
+    overflow: hidden;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border-soft);
+    background-color: var(--color-bg-soft);
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 1rem;
+  }
+
+  .series-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0;
+    border-radius: var(--radius);
+    transition: transform 0.3s ease;
+  }
+
+  .series-card:hover .series-cover img {
+    transform: scale(1.03);
+  }
+
+  .series-tag {
+    position: absolute;
+    top: 0.6rem;
+    left: 0.6rem;
+    background-color: rgba(193, 39, 45, 0.95);
+    color: #fafaf9;
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    padding: 0.3rem 0.6rem;
+    border-radius: var(--radius);
+    letter-spacing: 0.05em;
+  }
+
+  .series-meta {
+    padding: 0 0.2rem;
+  }
+
+  .series-title {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 0 0 0.5rem;
+  }
+
+  .series-desc {
+    font-size: 0.85rem;
+    color: var(--color-text-soft);
+    line-height: 1.5;
+    margin: 0 0 0.6rem;
+  }
+
+  .series-date {
+    font-size: 0.75rem;
+    color: var(--color-text-mute);
+    margin: 0;
+    font-family: var(--font-mono);
+    letter-spacing: 0.02em;
+  }
+
+  /* 最新文章 */
   .latest h2 {
     font-size: 1.3rem;
     border-bottom: 1px solid var(--color-border);
@@ -124,6 +284,11 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft))
 
     .hero-text h1 {
       font-size: 1.7rem;
+    }
+
+    .series-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
     }
   }
 </style>
