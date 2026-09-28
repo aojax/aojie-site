@@ -3,9 +3,10 @@ import type { CollectionEntry } from 'astro:content';
 
 export interface Props {
   post: CollectionEntry<'posts'>;
+  showCover?: boolean;
 }
 
-const { post } = Astro.props;
+const { post, showCover = false } = Astro.props;
 const { title, description, pubDate, tags, category } = post.data;
 
 const dateFormatted = pubDate.toLocaleDateString('zh-CN', {
@@ -17,7 +18,7 @@ const dateFormatted = pubDate.toLocaleDateString('zh-CN', {
 
 <article class="post-card">
   <a href={`/posts/${post.id}`} class="post-card-link">
-    {post.data.cover && (
+    {showCover && post.data.cover && (
       <div class="cover">
         <img src={post.data.cover} alt={title} loading="lazy" />
       </div>
