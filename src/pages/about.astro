@@ -114,9 +114,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </p>
     </section>
 
-    <section>
+    <section class="contact-section">
       <h2>联系方式</h2>
-      <ul>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <a class="contact-qr" href="/contact/wechat-public-account.jpg" target="_blank" rel="noopener">
+            <img src="/contact/wechat-public-account.jpg" alt="元宇宙数字资产 NFT 研究发展中心 公众号二维码" loading="lazy" decoding="async" />
+          </a>
+          <div class="contact-meta">
+            <h3 class="contact-title">微信公众号</h3>
+            <p class="contact-name">元宇宙数字资产 NFT 研究发展中心</p>
+            <p class="contact-hint">微信「搜一搜」可关注</p>
+          </div>
+        </div>
+        <div class="contact-card">
+          <a class="contact-qr" href="/contact/wechat-personal-qr.jpg" target="_blank" rel="noopener">
+            <img src="/contact/wechat-personal-qr.jpg" alt="林奥杰 个人微信二维码" loading="lazy" decoding="async" />
+          </a>
+          <div class="contact-meta">
+            <h3 class="contact-title">个人微信</h3>
+            <p class="contact-name">奥杰 · 北京 · 东城</p>
+            <p class="contact-hint">扫码添加好友</p>
+          </div>
+        </div>
+      </div>
+      <ul class="contact-links">
         <li>邮箱：<a href="mailto:olachina@qq.com">olachina@qq.com</a></li>
         <li>RSS：<a href="/rss.xml">订阅本站更新</a></li>
       </ul>
@@ -245,6 +267,93 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   @media (max-width: 640px) {
     .portrait {
       max-width: 240px;
+    }
+  }
+
+  /* 联系方式卡片 */
+  .contact-section {
+    margin: 3rem 0;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .contact-card {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 1.2rem;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid var(--color-border-soft);
+    border-radius: var(--radius);
+    background-color: var(--color-bg-soft);
+  }
+
+  .contact-qr {
+    display: block;
+    border-bottom: 0;
+  }
+
+  .contact-qr img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    background-color: #fff;
+    margin: 0;
+  }
+
+  .contact-title {
+    font-size: 0.85rem;
+    color: var(--color-text-mute);
+    margin: 0 0 0.3rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .contact-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0 0 0.3rem;
+    color: var(--color-text);
+    line-height: 1.4;
+  }
+
+  .contact-hint {
+    font-size: 0.8rem;
+    color: var(--color-text-mute);
+    margin: 0;
+  }
+
+  .contact-links {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border-soft);
+    list-style: none;
+  }
+
+  .contact-links li {
+    margin: 0.4em 0;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--color-text-soft);
+  }
+
+  @media (max-width: 720px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .contact-card {
+      grid-template-columns: 120px 1fr;
+      gap: 1rem;
+      padding: 0.8rem;
     }
   }
 
