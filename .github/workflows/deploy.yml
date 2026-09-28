@@ -1,0 +1,69 @@
+name: Deploy to Cloudflare Pages
+
+# 兜底部署：即使 Cloudflare 的 Git webhook 断掉，
+# GitHub Actions 也能独立完成构建 + 部署。
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:  # 允许在 Actions 页面手动触发
+
+# 同一分支只保留最新一次运行，避免并发部署互相覆盖
+concurrency:
+  group: pages-deploy-main
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Deploy to Cloudflare Pages
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy
+          # 改成你的 Pages 项目名（Cloudflare Dashboard → Workers & Pages 里能看到）
+          # Pages 项目名通常等于 GitHub 仓库名
+          projectName: aojie-site
+          # branch 设为生产分支；用 main 表示这是 production 部署
+          branch: main
+          # gitHubToken 仅在使用 Open Workers API 时需要，Pages 直传不需要
+          # failOnUnmatchedInput: false
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Deployment URL
+        run: |
+          echo "### 部署完成 🎉" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Production URL: https://${{ steps.deploy.outputs.deployment-url }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Commit: ${{ github.sha }}" >> "$GITHUB_STEP_SUMMARY"
