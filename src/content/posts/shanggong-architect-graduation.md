@@ -11,6 +11,8 @@ cover: '/covers/shanggong-architect-graduation.png'
 
 本文分两部分：**先是本人在结业仪式上的致辞全文，再是本次培训的完整摘要。**
 
+![结业仪式现场](/images/posts/shanggong/ceremony-venue.jpg)
+
 ---
 
 ## 一、结业仪式致辞
@@ -51,6 +53,8 @@ cover: '/covers/shanggong-architect-graduation.png'
 
 西沐老师给我们的课题，我们一起把它接住了。接下来，就带着这些具体的问题，回到各自的项目里继续做。
 
+![林奥杰教授在结业仪式上致辞](/images/posts/shanggong/lin-aojie-speech.jpg)
+
 > **延伸阅读**：致辞中提到的"10 第纳尔孔雀币"是《从 10 第纳尔到一件被记住的礼物》的原型案例 → [文化转译的三次跳跃](/posts/ten-denar-to-a-keepable-gift/)
 
 ---
@@ -78,6 +82,8 @@ cover: '/covers/shanggong-architect-graduation.png'
 - **首期高级班学员** —— 江则昊、陈乾、崔巍巍、韩旭等
 
 结业仪式由陈斐鹏主持。西沐教授、林奥杰教授先后作致辞总结，四位学员代表依次发言。
+
+![西沐教授作培训总结致辞](/images/posts/shanggong/ximu-address.jpg)
 
 ### 对标国家标准与教材体系
 
@@ -134,6 +140,22 @@ cover: '/covers/shanggong-architect-graduation.png'
 - 未来将把所学知识运用到实际工作当中，**积极投身文化数字产业建设**，推动传统文化资源活化转化
 
 全体学员对本次定制班的课程设置、教学安排给予高度评价。
+
+![学员代表江则昊发言](/images/posts/shanggong/student-jiang-zehao.jpg)
+
+![学员代表韩旭发言](/images/posts/shanggong/student-han-xu.jpg)
+
+![学员代表崔巍巍发言](/images/posts/shanggong/student-cui-weiwei.jpg)
+
+![学员代表陈乾发言](/images/posts/shanggong/student-chen-qian.jpg)
+
+![部分师生合影](/images/posts/shanggong/group-photo.jpg)
+
+完成课程的学员，均获得工业和信息化部工业文化发展中心颁发的"尚工"行动数字资产架构师（高级）培训证书，证书可通过[中心官网](https://www.miit-icdc.org/zscx.htm)核验。
+
+![“尚工”行动数字资产架构师（高级）培训证书](/images/posts/shanggong/certificate.jpg)
+
+根据培训工作安排，第二期"尚工"行动数字资产架构师（高级）能力提升培训——文化艺术行业定制班计划于 **10 月 24 日**在北京开班。
 
 ---
 
