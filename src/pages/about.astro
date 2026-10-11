@@ -26,11 +26,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section>
       <h2>我是谁</h2>
       <p>
-        <strong>林奥杰</strong>，研究者，主要工作集中在<strong>艺术金融、文化数字资产标准化、艺术品鉴证溯源、NFT / 元宇宙数字资产</strong>等交叉领域。
+        主要工作集中在<strong>艺术金融、文化数字资产标准化、艺术品鉴证溯源、NFT / 元宇宙数字资产</strong>等交叉领域。
       </p>
-      <p>
-        现任<strong>中国艺术经济研究院副秘书长</strong>，<strong>沉浸式交互动漫文化和旅游部重点实验室专家委员会委员</strong>，并任首尔科学综合大学院大学相关职务。
-      </p>
+    </section>
+
+    <section class="roles-section">
+      <h2>任职</h2>
+      <ul class="roles">
+        <li>
+          <span class="role-org">中国艺术经济研究院</span>
+          <span class="role-title">副秘书长</span>
+        </li>
+        <li>
+          <span class="role-org">全国文化大数据交易中心 · 深圳数字文化产业创新研究院</span>
+          <span class="role-title">高级顾问、评审专家</span>
+        </li>
+        <li>
+          <span class="role-org">上海数据交易所 · 文化数据数纽中心</span>
+          <span class="role-title">副主任</span>
+        </li>
+        <li>
+          <span class="role-org">沉浸式交互动漫文化和旅游部重点实验室</span>
+          <span class="role-title">专家委员会委员</span>
+        </li>
+        <li>
+          <span class="role-org">广东省艺术品行业协会</span>
+          <span class="role-title">特聘专家</span>
+        </li>
+        <li>
+          <span class="role-org">江苏省艺术品行业协会 · 标准化办公室</span>
+          <span class="role-title">常务副主任</span>
+        </li>
+        <li>
+          <span class="role-org">首尔科学综合大学院大学</span>
+          <span class="role-title">相关职务</span>
+        </li>
+      </ul>
     </section>
 
     <section>
@@ -52,6 +83,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <li><strong>环太湖艺术动产平台</strong> —— 区域文化资产数字化</li>
         <li><strong>苏豪文化出海</strong> —— 文化数字资产跨境</li>
         <li><strong>景德镇国版交</strong> —— 版权交易基础设施</li>
+        <li>
+          <strong>元宇宙数字资产（NFT）研究发展中心</strong> —— 发起与学术主持 ·
+          <a href="https://www.szcaee.cn/page/364/kind/13543.html" target="_blank" rel="noopener">任职公告 →</a>
+        </li>
       </ul>
     </section>
 
@@ -236,6 +271,50 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: 1.3rem;
     border-bottom: 1px solid var(--color-border);
     padding-bottom: 0.3em;
+  }
+
+  /* 任职列表 */
+  .roles-section {
+    margin: 2.5rem 0;
+  }
+
+  .roles {
+    margin: 1.2rem 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--color-border-soft);
+  }
+
+  .roles li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 1rem;
+    margin: 0;
+    padding: 0.7rem 0.2rem;
+    border-bottom: 1px solid var(--color-border-soft);
+  }
+
+  .role-org {
+    flex: 1 1 22em;
+    font-size: 1rem;
+    color: var(--color-text);
+  }
+
+  .role-title {
+    flex: 0 0 auto;
+    font-size: 0.85rem;
+    color: var(--color-link);
+    font-family: var(--font-mono);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 560px) {
+    .roles li {
+      flex-direction: column;
+      gap: 0.2rem;
+    }
   }
 
   .portrait {
